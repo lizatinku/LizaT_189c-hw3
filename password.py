@@ -35,11 +35,11 @@ For example, if the password is at least 5 characters long,
 you shouldn't say that it is exactly 10 characters long,
 and you shouldn't hard-code a specific string like "password"
 to satisfy the rule.
-We will be checking your implemention against a correct implementation
+We will be checking your implementation against a correct implementation
 of the rule during grading to see if it matches the right set of
 strings.
 
-For rules 5 and 9: you won't be able to encode the exact
+For rules 5 and 9: you may not be able to encode the exact
 requirements, but you should come up with a useful stronger
 requirement. For example, if the rule is "contains a number",
 you could encode that as "contains exactly 1, 2, or 3 numbers."
@@ -47,20 +47,13 @@ But you still shouldn't hard code a specific string like "123"
 to satisfy the rule.
 
 For rules 6 and 8: the password game online accepts both case-insensitive
-and case-sensitive versions of the rule. You may interpret this rule
-however you prefer, but you should be consistent with one of the following
-four conventions:
-1. All lowercase: Just assume the part of the password that is being checked
-   is all lowercase
-2. All uppercase: Just assume the part of the password that is being checked
-    is all uppercase
-3. Case-insensitive: Assume the part of the password that is being checked
-    can be any mix of uppercase and lowercase
-4. First letter uppercase: Assume the first letter of the part of the password
-    being checked is uppercase, and the rest is lowercase.
+and case-sensitive versions of the rule.
+For this homework, please instead take one of the following two conventions:
+1. All lowercase: Assume the part of the password that is being checked is all lowercase letters.
+2. Assume the first letter of the part of the password being checked is uppercase, and the rest is lowercase.
 
 Finally, Z3 may start to slow down once all the rules are added!
-Be patient -- the code may take a couple of minutes to run.
+Be patient -- the code may take a few minutes to run.
 
 === Grading notes ===
 
@@ -260,16 +253,16 @@ Why do you think it was difficult?
 (Give your best guess -- there is no specific right answer.)
 
 # Do not remove this line:
-###### Answer Q12 Below ######
+===== ANSWER Q12 BELOW =====
 
-###### End of Answer ######
+===== END OF Q12 ANSWER =====
 
 13. Which of the rules was hardest for Z3 to solve?
 Why do you think it was difficult?
 (Give your best guess -- there is no specific right answer.)
 
 # Do not remove this line:
-###### Answer Q13 Below ######
+===== ANSWER Q13 BELOW =====
 
-###### End of Answer ######
+===== END OF Q13 ANSWER =====
 """

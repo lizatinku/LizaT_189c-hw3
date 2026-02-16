@@ -2,7 +2,7 @@
 
 ## ➜ [The password game](https://neal.fun/password-game/)
 
-## Due date: Monday, May 13
+## Due date: Tuesday, February 24
 
 ## Overview
 
