@@ -2,7 +2,7 @@
 
 ## ➜ [The password game](https://neal.fun/password-game/)
 
-## Due date: Tuesday, February 24
+## Due date: Friday, February 27
 
 ## Overview
 
@@ -16,14 +16,14 @@ to get a sense of how it works.
 
 As with HW2, you will need to have Z3 installed (see [Homework 0](https://github.com/DavisPL-Teaching/189c-hw0)).
 
-As with HW1 and HW2, you will submit your homework through GitHub Classroom.
-Clone your copy of the repository, then add, commit, and push your changes to GitHub before the deadline.
-For detailed instructions, see [this Piazza post](https://piazza.com/class/lt90i40zrot3ue/post/48).
+As with HW1 and HW2, you will submit your homework through Gradescope.
+Please see [instructions on Piazza](https://piazza.com/class/mk1iqtdmipw1z/post/40) and follow them carefully.
 
 ## Task
 
 Your task is to fill in `password.py` with a Z3 program that solves the first 10 levels of the password game.
-When run, the program will print out a password satisfying all the cosntraints for each of the first 10 levels.
+You will need to play the password game to figure out the constraints for each level.
+When run, the program will print out a password satisfying all the constraints for each of the first 10 levels.
 The file contains further instructions.
 
 ## Getting help

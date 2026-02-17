@@ -28,7 +28,7 @@ To simplify the problem, we will assume that the
 password is ASCII-only. The rule `rule_0` is written for you,
 and it enforces this constraint.
 
-With the exceptions listed below (in rules 5, 6, 8, and 9),
+With the exceptions listed below (in rules 5, 6, 8, 9, and 10),
 all of the other rules should exactly encode the requirements
 given by the password game -- with no additional restrictions.
 For example, if the password is at least 5 characters long,
@@ -51,6 +51,10 @@ and case-sensitive versions of the rule.
 For this homework, please instead take one of the following two conventions:
 1. All lowercase: Assume the part of the password that is being checked is all lowercase letters.
 2. Assume the first letter of the part of the password being checked is uppercase, and the rest is lowercase.
+
+For rule 10: since we do not know all captchas that might appear in the game,
+for this rule, please manually encode that the password contains the specific captcha that you got when playing the game. You may need to change your encoding
+if you refresh the game and it gives you a new captcha.
 
 Finally, Z3 may start to slow down once all the rules are added!
 Be patient -- the code may take a few minutes to run.
