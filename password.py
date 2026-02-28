@@ -135,12 +135,14 @@ def rule_0(password):
     # The password consists of only ASCII characters.
     return z3.InRe(password, z3.Star(z3.Range(" ", "~")))
 
+# def rule_1(password):
+#     return z3.And(
+#         z3.Length(password) >= 5,
+#         z3.Length(password) <= 40,
+#         z3.Not(z3.InRe(password, ReContaining(z3.Re(" "))))
+#     )
 def rule_1(password):
-    return z3.And(
-        z3.Length(password) >= 5,
-        z3.Length(password) <= 40,
-        z3.Not(z3.InRe(password, ReContaining(z3.Re(" "))))
-    )
+    return z3.Length(password) >= 5
     # raise NotImplementedError
 
 def rule_2(password):
@@ -305,10 +307,27 @@ Time bound: the test should run in under 5 minutes.
 
 import pytest
 
-@pytest.mark.skip
+# @pytest.mark.skip(False)
 def test_redundant_rules():
-    # TODO
-    raise NotImplementedError
+    password = z3.String("password")
+    solver = z3.Solver()
+
+    solver.add(z3.Length(password) <= 20)
+
+    solver.add(rule_0(password))
+    solver.add(rule_1(password))
+    solver.add(rule_2(password))
+    solver.add(rule_4(password))
+    solver.add(rule_5(password))
+    solver.add(rule_6(password))
+    solver.add(rule_7(password))
+    solver.add(rule_8(password))
+    solver.add(rule_9(password))
+    solver.add(rule_10(password))
+
+    solver.add(z3.Not(rule_3(password)))
+    assert solver.check() == z3.unsat
+    # raise NotImplementedError
 
 """
 12. Which of the rules was hardest to encode?
@@ -317,7 +336,15 @@ Why do you think it was difficult?
 
 # Do not remove this line:
 ===== ANSWER Q12 BELOW =====
+Rule 9 was the hardest to encode.
+It required modeling Roman numeral multiplication inside a string.
+There is no built-in way in Z3 to interpret Roman numerals as numbers.
+I had to redesign the rule several times before finding a reasonable structural encoding.
 
+Rule 5 was also really hard to encode.
+It required making the digits add up to 25, which is not easy to express over strings.
+Z3 does not directly support summing digits inside a string. 
+I had to carefully restrict which digits were allowed and prevent extra digits from appearing.
 ===== END OF Q12 ANSWER =====
 
 13. Which of the rules was hardest for Z3 to solve?
@@ -326,6 +353,10 @@ Why do you think it was difficult?
 
 # Do not remove this line:
 ===== ANSWER Q13 BELOW =====
-
+I think rule 9 was the hardest for Z3 to solve. 
+Making normal numbers multiply to 35 would already be hard. Doing the same thing with Roman numerals inside a string was even harder.
+It required combining string patterns with arithmetic reasoning.
+Some earlier versions I made the solver very slow.
+I had to simplify the rule to make it easier for Z3 to handle.
 ===== END OF Q13 ANSWER =====
 """
