@@ -136,44 +136,103 @@ def rule_0(password):
     return z3.InRe(password, z3.Star(z3.Range(" ", "~")))
 
 def rule_1(password):
-    # TODO
-    raise NotImplementedError
+    return z3.And(
+        z3.Length(password) >= 5,
+        z3.Length(password) <= 40,
+        z3.Not(z3.InRe(password, ReContaining(z3.Re(" "))))
+    )
+    # raise NotImplementedError
 
 def rule_2(password):
-    # TODO
-    raise NotImplementedError
+    return z3.InRe(password, ReContaining(z3.Range("0", "9")))
+    # raise NotImplementedError
 
 def rule_3(password):
-    # TODO
-    raise NotImplementedError
+    return z3.InRe(password, ReContaining(z3.Range("A", "Z")))
+    # raise NotImplementedError
 
 def rule_4(password):
-    # TODO
-    raise NotImplementedError
+    special = z3.Union(
+    z3.Range("!", "/"),
+    z3.Range(":", "@"),
+    z3.Range("[", "`"),
+    z3.Range("{", "~")
+)
+    return z3.InRe(password, ReContaining(special))
+    # raise NotImplementedError
 
 def rule_5(password):
-    # TODO
-    raise NotImplementedError
+    contains_997 = z3.InRe(password, ReContaining(z3.Re("997")))
+    any_digit = z3.Range("0", "9")
+    digit = z3.Range("0", "9")
+    at_most_three_digits = z3.Not(
+        z3.InRe(password, ReContaining(
+            z3.Concat(digit, digit, digit, digit)
+        ))
+    )
+    
+    return z3.And(contains_997, at_most_three_digits)
+    # raise NotImplementedError
 
 def rule_6(password):
-    # TODO
-    raise NotImplementedError
+    months = z3.Union(
+        z3.Re("january"),
+        z3.Re("february"),
+        z3.Re("march"),
+        z3.Re("april"),
+        z3.Re("may"),
+        z3.Re("june"),
+        z3.Re("july"),
+        z3.Re("august"),
+        z3.Re("september"),
+        z3.Re("october"),
+        z3.Re("november"),
+        z3.Re("december")
+    )
+    return z3.InRe(password, ReContaining(months))
+    # raise NotImplementedError
 
 def rule_7(password):
-    # TODO
-    raise NotImplementedError
-
+    roman = z3.Union(
+        z3.Re("I"),
+        z3.Re("V"),
+        z3.Re("X"),
+        z3.Re("L"),
+        z3.Re("C"),
+        z3.Re("D"),
+        z3.Re("M")
+    )
+    return z3.InRe(password, ReContaining(roman))
+    # raise NotImplementedError
+    
 def rule_8(password):
-    # TODO
-    raise NotImplementedError
+    sponsors = z3.Union(
+        z3.Re("starbucks"),
+        z3.Re("pepsi"),
+        z3.Re("shell")
+    )
+    return z3.InRe(password, ReContaining(sponsors))
 
 def rule_9(password):
-    # TODO
-    raise NotImplementedError
+    non_roman = z3.Union(
+        z3.Range("a", "z"),
+        z3.Range("0", "9"),
+        z3.Range("!", "/"),
+        z3.Range(":", "@"),
+        z3.Range("[", "`"),
+        z3.Range("{", "~")
+    )
+    pattern = z3.Concat(
+        z3.Re("V"),
+        non_roman,
+        z3.Re("VII")
+    )
+    return z3.InRe(password, ReContaining(pattern))
+    # raise NotImplementedError
 
 def rule_10(password):
-    # TODO
-    raise NotImplementedError
+    return z3.InRe(password, ReContaining(z3.Re("EC6PM")))
+    # raise NotImplementedError
 
 ########################
 ###    Entrypoint    ###
